@@ -162,7 +162,7 @@ add_library (pcl_ros_surface
   src/pcl_ros/surface/moving_least_squares.cpp
 )
 target_link_libraries(pcl_ros_surface ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(pcl_ros_surface ${PROJECT_NAME}_gencfg)
+add_dependencies(pcl_ros_surface ${PROJECT_NAME}_gencfg ${catkin_EXPORTED_TARGETS})
 class_loader_hide_library_symbols(pcl_ros_surface)
 
 ## Tools
