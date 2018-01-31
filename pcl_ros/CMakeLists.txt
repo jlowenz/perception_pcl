@@ -104,6 +104,7 @@ add_library(pcl_ros_io
 )
 target_link_libraries(pcl_ros_io pcl_ros_tf ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
 class_loader_hide_library_symbols(pcl_ros_io)
+add_dependencies(pcl_ros_io ${catkin_EXPORTED_TARGETS})
 
 ## Declare the pcl_ros_features library
 add_library(pcl_ros_features
@@ -122,7 +123,7 @@ add_library(pcl_ros_features
   src/pcl_ros/features/vfh.cpp
 )
 target_link_libraries (pcl_ros_features ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(pcl_ros_features ${PROJECT_NAME}_gencfg)
+add_dependencies(pcl_ros_features ${PROJECT_NAME}_gencfg ${catkin_EXPORTED_TARGETS})
 class_loader_hide_library_symbols(pcl_ros_features)
 
 
@@ -170,16 +171,20 @@ add_executable(pcd_to_pointcloud tools/pcd_to_pointcloud.cpp)
 target_link_libraries(pcd_to_pointcloud ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
 
 add_executable(pointcloud_to_pcd tools/pointcloud_to_pcd.cpp)
-target_link_libraries(pointcloud_to_pcd ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARY_DIRS} ${PCL_LIBRARIES})
+target_link_libraries(pointcloud_to_pcd ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARY_DIRS} ${PCL_LIBRARIES} )
+add_dependencies(pointcloud_to_pcd ${catkin_EXPORTED_TARGETS})
 
 add_executable(bag_to_pcd tools/bag_to_pcd.cpp)
 target_link_libraries(bag_to_pcd pcl_ros_tf ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARY_DIRS} ${PCL_LIBRARIES})
+add_dependencies(bag_to_pcd ${catkin_EXPORTED_TARGETS})
 
 add_executable(convert_pcd_to_image tools/convert_pcd_to_image.cpp)
 target_link_libraries(convert_pcd_to_image ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
+add_dependencies(convert_pcd_to_image ${catkin_EXPORTED_TARGETS})
 
 add_executable(convert_pointcloud_to_image tools/convert_pointcloud_to_image.cpp)
 target_link_libraries(convert_pointcloud_to_image ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
+add_dependencies(convert_pointcloud_to_image ${catkin_EXPORTED_TARGETS})
 
 ## Downloads
 
