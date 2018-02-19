@@ -169,6 +169,7 @@ class_loader_hide_library_symbols(pcl_ros_surface)
 
 add_executable(pcd_to_pointcloud tools/pcd_to_pointcloud.cpp)
 target_link_libraries(pcd_to_pointcloud ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARIES} ${PCL_LIBRARIES})
+add_dependencies(pcd_to_pointcloud ${catkin_EXPORTED_TARGETS})
 
 add_executable(pointcloud_to_pcd tools/pointcloud_to_pcd.cpp)
 target_link_libraries(pointcloud_to_pcd ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${Eigen3_LIBRARY_DIRS} ${PCL_LIBRARIES} )
